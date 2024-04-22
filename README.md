@@ -32,6 +32,15 @@ This step involves shifting our focus from recommender engines to generative mod
 
 ## Getting Started
 
+## 1. Hugging Face
+
+**Free to test Streamlit sandbox:**
+
+https://huggingface.co/spaces/jlayer3/AutoChef
+ 
+
+## 2. Local
+
 ### Prerequisites
 
 - Python 3.11.x is recommended.
