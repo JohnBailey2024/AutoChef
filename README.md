@@ -5,13 +5,15 @@ Welcome to our AutoChef repository! This project aims to provide users with pers
 ## Team Members
 
 - **John Bailey**: Developed and implemented the Streamlit interface.
-- **Nihtin Kumar**: Identified and preprocessed the training dataset.
-- **James Chun**: Established and formatted the project's GitHub repository.
+- **Nithin Kumar**: Identified and preprocessed the training dataset.
+- **James Chung**: Established and formatted the project's GitHub repository.
 - **Felix Tong**: Authored the model and backend code.
 
 ## Project Overview
 
-Right now AutoChef takes in a list of ingredients from the user and suggests recipes from a dataset containing similar ingredients. We utilize word embeddings to match input ingredients with recipes in the dataset.
+Right now, AutoChef takes in a list of ingredients from the user and suggests recipes from a dataset containing similar ingredients. 
+
+We utilize a Sentence Transformer to encode our ingredients into embeddings. These are used to recommend the user with relevant recipes.
 
 ### Features
 
@@ -22,12 +24,51 @@ Right now AutoChef takes in a list of ingredients from the user and suggests rec
 
 ## Future Enhancements
 
-Moving forward, our team aims to enhance the system's capabilities by training the model to generate entirely new recipes. We will focus on ensuring that the generated recipes are coherent and palatable, avoiding clashing flavors or inedible combinations.
+Moving forward, our team aims to enhance the system's capabilities by training the model to generate entirely new recipes.
+
+This step involves shifting our focus from recommender engines to generative models such as LLMs that use the transformer architecture
+
+ We will focus on ensuring that the generated recipes are coherent and palatable, avoiding clashing flavors or inedible combinations.
 
 ## Getting Started
 
-To get started with our Recipe Recommender System:
+### Prerequisites
 
-1. Clone this repository to your local machine.
-2. Install the required dependencies listed in `requirements.txt`.
-3. Run the Streamlit interface to input ingredients and receive recipe recommendations.
+- Python 3.11.x is recommended.
+
+### Installation
+
+1. Clone this repository to your local machine:
+
+    ```bash
+    git clone https://github.com/JohnBailey2024/AutoChef.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd /path/to/local/autochef
+    ```
+
+3. Install the required dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Usage
+
+1. Run the Streamlit interface:
+
+    ```bash
+    streamlit run app.py
+    ```
+
+2. Access the interface by opening the following URL in your web browser:
+
+    ```plaintext
+    http://localhost:8501
+    ```
+
+3. Input ingredients into the interface to receive recipe recommendations.
+
