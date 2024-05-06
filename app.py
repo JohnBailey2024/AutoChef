@@ -1,82 +1,27 @@
 import streamlit as st
-from streamlit_tags import st_tags, st_tags_sidebar
-from datasets import load_dataset 
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sentence_transformers import SentenceTransformer
-from annoy import AnnoyIndex
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-model = SentenceTransformer.load('st_model')
+def main():
+    st.image('download.jpeg', width = 250)
+    st.title("Welcome to the Home of the AutoChef")
 
-def tokenize_and_encode(text, model=model):
-    embedding = model.encode([text])
-    return embedding[0]
+    st.subheader("About Our Product")
+    st.write("""
+        Our automatic recipe generator is a versatile tool designed to provide personalized recipe recommendations based on user's available ingredients.
 
-
-if __name__ == '__main__':
-
-    df = pd.read_csv('train_orig.csv')
-    dim = 384
-
-    # Load the index
-    title_u = AnnoyIndex(dim, 'angular')
-    title_u.load('anns/title_test.ann')  # super fast, will just mmap the file
-
-    # Load the index
-    ingredients_u = AnnoyIndex(dim, 'angular')
-    ingredients_u.load('anns/ingredients_test.ann')  # super fast, will just mmap the file
-
-    # Load the index
-    directions_u = AnnoyIndex(dim, 'angular')
-    directions_u.load('anns/directions_test.ann')  # super fast, will just mmap the file
-
-
-    st.markdown("<h1 style='text-align: center'>AutoChef</h1>", unsafe_allow_html=True)
-
-    keywords = st_tags(
-        label='',
-        text='Press enter ingredients or add more',
-        suggestions=['five', 'six', 'seven', 'eight', 'nine', 'three', 'eleven', 'ten', 'four'])
-
-    query = ' '.join(keywords)
-    st.write(query)
-
-    query_embedding = tokenize_and_encode(query, model=model)
-
-    n_similar = 5
-    similar_items = ingredients_u.get_nns_by_vector(query_embedding, n_similar)
-
-    st.markdown(
-        """
-        <style>
-        .custom-spacing {
-            margin-bottom: -10px; /* Adjust the negative value as needed */
-        }
-        </style>
-        <style>
-        .head-spacing{
-            margin-top: 10px; /* Adjust the negative value as needed */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-    st.markdown("<h2 style='text-align: center' >Results</h2>", unsafe_allow_html=True)
-    st.divider()
-    # Print the similar items
-    for item in similar_items:
-        recipe = df.iloc[item]
-        st.write(f"#### {recipe['title']}")
+        Key features of our automatic recipe generator include:
         
-        st.write(f"##### Ingredients:")
-        for i in eval(recipe['ingredients']):
-            st.write(f'<div class="custom-spacing"><li>{i}</div>', unsafe_allow_html=True)
-            #st.write(f'- {i}')
+        1. **Ingredient-Based Search**: The generator allows users to input available ingredients, and it suggests recipes that utilize those ingredients, reducing food waste and making meal planning more efficient.
         
-        st.write('<div class="head-spacing"><h5>Directions:</h5></div>', unsafe_allow_html=True)
-        for i, step in enumerate(eval(recipe['directions'])):
-            st.write(f'<pre><div class="custom-spacing"><b>{i+1}.</b> {step}', unsafe_allow_html=True)
+        2. **Diverse Cuisine Options**: With a vast database of recipes spanning various cuisines, including international and regional dishes, the generator offers a wide range of options to suit different cultural preferences and culinary interests.
+        
+        3. **Interactive User Interface**: The user-friendly interface makes it easy for users to input their preferences, explore recipe options, and access cooking instructions and ingredient lists.
+        
+        
+        Overall, our automatic recipe generator is a valuable tool for home cooks, food enthusiasts, and anyone looking for inspiration and guidance in the kitchen. Whether you're seeking quick and easy weeknight meals, healthy options for special diets, or adventurous culinary experiments, our generator empowers you to discover and enjoy delicious recipes tailored to your tastes and requirements.
+        """)
 
-        st.divider()
+if __name__ == "__main__":
+    main()

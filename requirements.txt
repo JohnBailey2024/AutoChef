@@ -1,7 +1,7 @@
-streamlit==1.33.0
-streamlit-tags==1.2.8
-datasets==2.19.0
-pandas==2.1.4
-scikit-learn==1.2.2
-sentence-transformers==2.7.0
-annoy==1.17.3
+IPython
+pandas
+h5py
+google-generativeai
+streamlit
+datasets
+sentence-transformers
