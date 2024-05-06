@@ -11,9 +11,9 @@ Welcome to our AutoChef repository! This project aims to provide users with pers
 
 ## Project Overview
 
-Right now, AutoChef takes in a list of ingredients from the user and suggests recipes from a dataset containing similar ingredients. 
+Right now, AutoChef takes in a list of ingredients from the user and generates Recipes grounded in similar recipes available in our dataset of over 2M+ recipes.
 
-We utilize a Sentence Transformer to encode our ingredients into embeddings. These are used to recommend the user with relevant recipes.
+We utilize a Sentence Transformer to encode our ingredients into embeddings. These are used to retrieve similar recipes, which our LLM, Google Gemini, uses to generate relevant recipes containing the ingredients for the user
 
 ### Features
 
@@ -24,9 +24,7 @@ We utilize a Sentence Transformer to encode our ingredients into embeddings. The
 
 ## Future Enhancements
 
-Moving forward, our team aims to enhance the system's capabilities by training the model to generate entirely new recipes.
-
-This step involves shifting our focus from recommender engines to generative models such as LLMs that use the transformer architecture
+Moving forward, our team aims to enhance the system's capabilities by training the model to generate entirely new recipes that only use similar recipes as a method to ensure good taste rather than use them as a template to base ground truth upon.
 
  We will focus on ensuring that the generated recipes are coherent and palatable, avoiding clashing flavors or inedible combinations.
 
